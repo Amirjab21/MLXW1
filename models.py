@@ -119,7 +119,7 @@ class CBOWTrainer:
         except Exception as e:
             raise Exception(f"Error tokenizing text: {type(text)}")
     
-    def create_context_target_pairs(words, window_size=2, pad_token='<pad>'):
+    def create_context_target_pairs(self, words, window_size=2, pad_token='<pad>'):
         
         """
         Create context-target pairs with padding for words at the start and end.
@@ -145,7 +145,7 @@ class CBOWTrainer:
         
         return pairs
     
-    def pair_to_tensor(pair, word_to_id):
+    def pair_to_tensor(self, pair, word_to_id):
         context, target = pair
         context_ids = [word_to_id.get(word, 0) for word in context]
         target_id = word_to_id.get(target, 0)
